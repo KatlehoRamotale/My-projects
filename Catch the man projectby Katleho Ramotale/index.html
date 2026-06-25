@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Man Ultimate Arcade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-bubbles">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h2>Wildhouse Arcade</h2>
+            <p>Loading your game world...</p>
+        </div>
+    </div>
+
+    <div class="game-wrapper">
+        <div class="game-card">
+            <div class="top-header-row">
+                <div>
+                    <h1>Catch the Man</h1>
+                    <p class="subtitle">Bubble Neon Arcade Adventure</p>
+                </div>
+
+                <button id="soundBtn" class="sound-icon-btn" aria-label="Toggle sound" title="Toggle sound">
+                    🔊
+                </button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">Player: <span id="currentProfileName">None</span></div>
+                <div class="stat-box">Avatar: <span id="currentAvatar">🙂</span></div>
+                <div class="stat-box">Skin: <span id="currentSkinName">Default</span></div>
+                <div class="stat-box">Score: <span id="score">0</span></div>
+                <div class="stat-box">Time: <span id="time">30</span>s</div>
+                <div class="stat-box">Lives: <span id="lives">3</span></div>
+                <div class="stat-box">Level: <span id="level">1</span></div>
+                <div class="stat-box">Combo: <span id="combo">0</span></div>
+                <div class="stat-box">Coins: <span id="coins">0</span></div>
+                <div class="stat-box">High Score: <span id="highScore">0</span></div>
+            </div>
+
+            <div id="gameArea" class="level-1-bg">
+                <div id="man">🕴️</div>
+
+                <!-- PROFILE SCREEN -->
+                <div id="profileScreen" class="overlay show">
+                    <div class="overlay-content wide-panel">
+                        <h2>Pick Your Player</h2>
+                        <p>Create your profile and jump into the neon arcade.</p>
+
+                        <div class="profile-create-row">
+                            <input type="text" id="newProfileName" placeholder="Enter profile name" maxlength="20">
+                            <select id="avatarSelect">
+                                <option value="🙂">🙂 Happy</option>
+                                <option value="😎">😎 Cool</option>
+                                <option value="🔥">🔥 Fire</option>
+                                <option value="👑">👑 Royal</option>
+                                <option value="🎮">🎮 Gamer</option>
+                            </select>
+                            <button id="createProfileBtn">Create Profile</button>
+                        </div>
+
+                        <div class="admin-login-row">
+                            <input type="password" id="adminPasswordInput" placeholder="Admin password">
+                            <button id="unlockAdminBtn">Unlock Admin</button>
+                        </div>
+
+                        <div id="profileList" class="profile-list"></div>
+
+                        <p class="small-note">
+                            Test profile included: <strong>TestMaster</strong> with unlimited coins.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- START SCREEN -->
+                <div id="startScreen" class="overlay">
+                    <div class="overlay-content">
+                        <h2>Ready to Play?</h2>
+                        <p>Catch the target before time runs out.</p>
+                        <p>Miss 3 times and you lose a life.</p>
+                        <p>Build combos, earn coins, unlock skins, and beat the boss round.</p>
+
+                        <button id="claimDailyRewardBtn">Claim Daily Reward</button>
+                        <button id="playBtn">Start New Game</button>
+                        <button id="continueBtn">Continue Saved Game</button>
+                    </div>
+                </div>
+
+                <!-- PAUSE -->
+                <div id="pauseScreen" class="overlay">
+                    <div class="overlay-content">
+                        <h2>Game Paused</h2>
+                        <p>Your arcade run is on hold.</p>
+                        <button id="resumeBtn">Resume Game</button>
+                    </div>
+                </div>
+
+                <!-- BOSS -->
+                <div id="bossScreen" class="overlay">
+                    <div class="overlay-content">
+                        <h2>Boss Round</h2>
+                        <p>The boss is bigger, faster, and worth more points.</p>
+                        <p>Catch it if you dare.</p>
+                        <button id="startBossBtn">Start Boss Round</button>
+                    </div>
+                </div>
+
+                <!-- WIN -->
+                <div id="winScreen" class="overlay">
+                    <div class="overlay-content">
+                        <h2>You Win!</h2>
+                        <p id="winScoreText">Your final score is 0</p>
+                        <p id="winCoinsText">You earned 0 coins</p>
+
+                        <div class="leaderboard-form">
+                            <input type="text" id="playerName" placeholder="Enter leaderboard name" maxlength="15">
+                            <button id="saveScoreBtn">Save Score</button>
+                        </div>
+
+                        <button id="playAgainFromWinBtn">Play Again</button>
+                    </div>
+                </div>
+
+                <!-- GAME OVER -->
+                <div id="gameOverScreen" class="overlay">
+                    <div class="overlay-content">
+                        <h2>Game Over</h2>
+                        <p id="finalScoreText">Your final score is 0</p>
+                        <p id="gameOverCoinsText">You earned 0 coins</p>
+
+                        <div class="leaderboard-form">
+                            <input type="text" id="gameOverPlayerName" placeholder="Enter leaderboard name" maxlength="15">
+                            <button id="gameOverSaveScoreBtn">Save Score</button>
+                        </div>
+
+                        <button id="restartBtn">Try Again</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button id="startBtn">Start Game</button>
+                <button id="pauseBtn">Pause</button>
+                <button id="saveProgressBtn">Save Progress</button>
+                <button id="resetBtn">Reset Game</button>
+                <button id="switchProfileBtn">Switch Profile</button>
+            </div>
+
+            <div class="shop-section">
+                <h2>Power-Up Shop</h2>
+                <div class="shop-items">
+                    <div class="shop-item">
+                        <h3>❤️ Extra Life</h3>
+                        <p>Cost: 30 coins</p>
+                        <button id="buyLifeBtn">Buy</button>
+                    </div>
+
+                    <div class="shop-item">
+                        <h3>⏰ +10 Seconds</h3>
+                        <p>Cost: 20 coins</p>
+                        <button id="buyTimeBtn">Buy</button>
+                    </div>
+
+                    <div class="shop-item">
+                        <h3>⭐ Score Boost</h3>
+                        <p>Cost: 40 coins</p>
+                        <button id="buyScoreBtn">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skins-section">
+                <h2>Skin Locker</h2>
+                <div id="skinsList" class="shop-items"></div>
+            </div>
+
+            <div class="achievements-section">
+                <h2>Achievement Board</h2>
+                <ul id="achievementList" class="achievement-list"></ul>
+            </div>
+
+            <div class="leaderboard-section">
+                <h2>Top Players</h2>
+                <ol id="leaderboardList"></ol>
+            </div>
+
+            <p id="message">Choose a profile to begin your arcade adventure.</p>
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 Wildhouse Entertainment Group. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
