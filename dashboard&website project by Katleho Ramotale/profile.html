@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Palace Hotel - Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkAuth(); applyTheme(); loadUserProfile(); renderUserBookings();">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="images/hotel logo1.png" alt="Hotel Logo" class="logo">
+            <h2>Grand Palace Hotel</h2>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="booking.html">Book Room</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="payment.html">Payment</a>
+            <a href="profile.html">Profile</a>
+            <a href="admin.html">Admin</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="terms.html">Ts&amp;Cs</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()">Light Mode</button>
+            <button onclick="logout()">Logout</button>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <section class="card profile-card">
+            <div class="avatar avatar-large" id="avatarPreview">U</div>
+
+            <div class="profile-upload-box">
+                <label for="profileImageInput">Profile Image</label>
+                <input type="file" id="profileImageInput" accept="image/*" onchange="previewProfileImage(event)">
+
+                <div class="button-row center-buttons">
+                    <button class="primary" onclick="uploadProfileImage()">Upload Image</button>
+                    <button class="secondary" onclick="removeProfileImage()">Remove Image</button>
+                </div>
+
+                <p id="profileImageMsg" class="message"></p>
+            </div>
+
+            <h1 id="profileName">User</h1>
+            <p>Account Type: <span id="profileRole">Guest</span></p>
+        </section>
+
+        <section class="card">
+            <h2>Account Information</h2>
+            <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+            <p><strong>Role:</strong> <span id="profileRoleInfo"></span></p>
+        </section>
+
+        <section class="card">
+            <h2>My Bookings</h2>
+            <div id="userBookingsList" class="bookings-list"></div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Grand Palace Hotel. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

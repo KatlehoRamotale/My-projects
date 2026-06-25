@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Palace Hotel - Reviews, Complaints & Suggestions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkAuth(); applyTheme();">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="images/hotel logo1.png" alt="Hotel Logo" class="logo">
+            <h2>Grand Palace Hotel</h2>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="booking.html">Book Room</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="payment.html">Payment</a>
+            <a href="profile.html">Profile</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="terms.html">Ts&amp;Cs</a>
+            <a href="admin.html">Admin</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()">Light Mode</button>
+            <button onclick="logout()">Logout</button>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <section class="card">
+            <h1>Guest Reviews & Feedback</h1>
+            <p>
+                We value every guest experience. Use this page to share a review, raise a complaint,
+                or submit suggestions to help us improve our hotel services.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Leave a Review</h2>
+
+            <label for="reviewName">Full Name <span class="required">*</span></label>
+            <input type="text" id="reviewName" placeholder="Enter your full name">
+
+            <label for="reviewRating">Rating <span class="required">*</span></label>
+            <select id="reviewRating">
+                <option value="">Select rating</option>
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Very Good</option>
+                <option value="3">3 - Good</option>
+                <option value="2">2 - Fair</option>
+                <option value="1">1 - Poor</option>
+            </select>
+
+            <label for="reviewMessage">Review <span class="required">*</span></label>
+            <textarea id="reviewMessage" rows="5" placeholder="Tell us about your stay" style="width:100%; padding:13px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card-2); color:var(--text);"></textarea>
+
+            <div class="button-row">
+                <button class="primary" onclick="submitReview()">Submit Review</button>
+            </div>
+
+            <p id="reviewMsg" class="message"></p>
+        </section>
+
+        <section class="card">
+            <h2>Complaint Section</h2>
+
+            <label for="complaintName">Full Name <span class="required">*</span></label>
+            <input type="text" id="complaintName" placeholder="Enter your full name">
+
+            <label for="complaintBookingRef">Booking Reference</label>
+            <input type="text" id="complaintBookingRef" placeholder="Optional booking reference">
+
+            <label for="complaintCategory">Complaint Category <span class="required">*</span></label>
+            <select id="complaintCategory">
+                <option value="">Select category</option>
+                <option value="Room Quality">Room Quality</option>
+                <option value="Staff Conduct">Staff Conduct</option>
+                <option value="Payment Issue">Payment Issue</option>
+                <option value="Check-in / Check-out">Check-in / Check-out</option>
+                <option value="Noise / Disturbance">Noise / Disturbance</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="complaintMessage">Complaint Details <span class="required">*</span></label>
+            <textarea id="complaintMessage" rows="6" placeholder="Describe the issue in detail" style="width:100%; padding:13px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card-2); color:var(--text);"></textarea>
+
+            <div class="button-row">
+                <button class="primary" onclick="submitComplaint()">Submit Complaint</button>
+            </div>
+
+            <p id="complaintMsg" class="message"></p>
+        </section>
+
+        <section class="card">
+            <h2>Suggestion Section</h2>
+
+            <label for="suggestionName">Full Name <span class="required">*</span></label>
+            <input type="text" id="suggestionName" placeholder="Enter your full name">
+
+            <label for="suggestionMessage">Your Suggestion <span class="required">*</span></label>
+            <textarea id="suggestionMessage" rows="5" placeholder="Share your idea or improvement suggestion" style="width:100%; padding:13px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card-2); color:var(--text);"></textarea>
+
+            <div class="button-row">
+                <button class="primary" onclick="submitSuggestion()">Submit Suggestion</button>
+            </div>
+
+            <p id="suggestionMsg" class="message"></p>
+        </section>
+
+        <section class="card">
+            <h2>Recent Reviews</h2>
+            <div id="reviewsList" class="bookings-list"></div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Grand Palace Hotel. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener("load", renderReviews);
+
+        function getGuestReviews() {
+            return JSON.parse(localStorage.getItem("hotelReviews")) || [];
+        }
+
+        function saveGuestReviews(reviews) {
+            localStorage.setItem("hotelReviews", JSON.stringify(reviews));
+        }
+
+        function getComplaints() {
+            return JSON.parse(localStorage.getItem("hotelComplaints")) || [];
+        }
+
+        function saveComplaints(complaints) {
+            localStorage.setItem("hotelComplaints", JSON.stringify(complaints));
+        }
+
+        function getSuggestions() {
+            return JSON.parse(localStorage.getItem("hotelSuggestions")) || [];
+        }
+
+        function saveSuggestions(suggestions) {
+            localStorage.setItem("hotelSuggestions", JSON.stringify(suggestions));
+        }
+
+        function submitReview() {
+            const reviewName = document.getElementById("reviewName");
+            const reviewRating = document.getElementById("reviewRating");
+            const reviewMessage = document.getElementById("reviewMessage");
+            const reviewMsg = document.getElementById("reviewMsg");
+
+            if (!reviewName.value.trim() || !reviewRating.value || !reviewMessage.value.trim()) {
+                reviewMsg.innerText = "Please fill up required fields.";
+                return;
+            }
+
+            const reviews = getGuestReviews();
+            reviews.unshift({
+                id: Date.now(),
+                name: reviewName.value.trim(),
+                rating: reviewRating.value,
+                message: reviewMessage.value.trim(),
+                date: new Date().toLocaleDateString()
+            });
+
+            saveGuestReviews(reviews);
+
+            reviewName.value = "";
+            reviewRating.value = "";
+            reviewMessage.value = "";
+            reviewMsg.innerText = "Review submitted successfully.";
+
+            renderReviews();
+        }
+
+        function submitComplaint() {
+            const complaintName = document.getElementById("complaintName");
+            const complaintBookingRef = document.getElementById("complaintBookingRef");
+            const complaintCategory = document.getElementById("complaintCategory");
+            const complaintMessage = document.getElementById("complaintMessage");
+            const complaintMsg = document.getElementById("complaintMsg");
+
+            if (!complaintName.value.trim() || !complaintCategory.value || !complaintMessage.value.trim()) {
+                complaintMsg.innerText = "Please fill up required fields.";
+                return;
+            }
+
+            const complaints = getComplaints();
+            complaints.unshift({
+                id: Date.now(),
+                name: complaintName.value.trim(),
+                bookingRef: complaintBookingRef.value.trim(),
+                category: complaintCategory.value,
+                message: complaintMessage.value.trim(),
+                status: "Open",
+                date: new Date().toLocaleDateString()
+            });
+
+            saveComplaints(complaints);
+
+            complaintName.value = "";
+            complaintBookingRef.value = "";
+            complaintCategory.value = "";
+            complaintMessage.value = "";
+            complaintMsg.innerText = "Complaint submitted successfully.";
+        }
+
+        function submitSuggestion() {
+            const suggestionName = document.getElementById("suggestionName");
+            const suggestionMessage = document.getElementById("suggestionMessage");
+            const suggestionMsg = document.getElementById("suggestionMsg");
+
+            if (!suggestionName.value.trim() || !suggestionMessage.value.trim()) {
+                suggestionMsg.innerText = "Please fill up required fields.";
+                return;
+            }
+
+            const suggestions = getSuggestions();
+            suggestions.unshift({
+                id: Date.now(),
+                name: suggestionName.value.trim(),
+                message: suggestionMessage.value.trim(),
+                date: new Date().toLocaleDateString()
+            });
+
+            saveSuggestions(suggestions);
+
+            suggestionName.value = "";
+            suggestionMessage.value = "";
+            suggestionMsg.innerText = "Suggestion submitted successfully.";
+        }
+
+        function renderReviews() {
+            const reviewsList = document.getElementById("reviewsList");
+            const reviews = getGuestReviews();
+
+            if (!reviewsList) return;
+
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = "<p>No reviews yet.</p>";
+                return;
+            }
+
+            reviewsList.innerHTML = reviews.map(review => `
+                <div class="booking-card">
+                    <h3>${"★".repeat(Number(review.rating))} ${"☆".repeat(5 - Number(review.rating))}</h3>
+                    <p><strong>Guest:</strong> ${review.name}</p>
+                    <p><strong>Date:</strong> ${review.date}</p>
+                    <p>${review.message}</p>
+                </div>
+            `).join("");
+        }
+    </script>
+</body>
+</html>

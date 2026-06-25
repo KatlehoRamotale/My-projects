@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Palace Hotel - Payment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkAuth(); applyTheme(); renderPaymentOptions(); renderReceipt();">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="images/hotel logo1.png" alt="Hotel Logo" class="logo">
+            <h2>Grand Palace Hotel</h2>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="booking.html">Book Room</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="payment.html">Payment</a>
+            <a href="profile.html">Profile</a>
+            <a href="admin.html">Admin</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="terms.html">Ts&amp;Cs</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()">Light Mode</button>
+            <button onclick="logout()">Logout</button>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <section class="card">
+            <h1>Payment Simulation</h1>
+
+            <label for="paymentBookingId">Select Booking <span class="required">*</span></label>
+            <select id="paymentBookingId" onchange="renderReceipt()"></select>
+
+            <label for="paymentMethod">Payment Method <span class="required">*</span></label>
+            <select id="paymentMethod">
+                <option value="">Select payment method</option>
+                <option value="Card">Card</option>
+                <option value="Cash">Cash</option>
+                <option value="EFT">EFT</option>
+            </select>
+
+            <label for="cardOwner">Card Owner Name <span class="required">*</span></label>
+            <input type="text" id="cardOwner" placeholder="Enter card owner name">
+
+            <label for="cardNumber">Card Number <span class="required">*</span></label>
+            <input type="text" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456">
+
+            <label for="expiryDate">Expiry Date <span class="required">*</span></label>
+            <input type="month" id="expiryDate">
+
+            <label for="cardCvc">CVC <span class="required">*</span></label>
+            <input type="text" id="cardCvc" maxlength="4" placeholder="123">
+
+            <div class="button-row">
+                <button class="primary" onclick="simulatePayment()">Pay Now</button>
+            </div>
+
+            <p id="paymentMsg" class="message"></p>
+        </section>
+
+        <section class="card">
+            <h2>Receipt</h2>
+            <div id="receiptBox" class="receipt-box">
+                <p>No payment receipt yet.</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Grand Palace Hotel. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Palace Hotel - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body" onload="applyTheme()">
+
+    <div class="auth-container">
+        <div class="card auth-card">
+            <div class="auth-logo-wrap">
+                <img src="images/hotel logo1.png" alt="Hotel Logo" class="logo">
+                <h1>Grand Palace Hotel</h1>
+                <p>Register or login to continue</p>
+            </div>
+
+            <label for="username">Username <span class="required">*</span></label>
+            <input type="text" id="username" placeholder="Enter username">
+
+            <label for="password">Password <span class="required">*</span></label>
+            <input type="password" id="password" placeholder="Enter password">
+
+            <label for="role">Account Type <span class="required">*</span></label>
+            <select id="role">
+                <option value="">Select account type</option>
+                <option value="guest">Guest</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+
+            <div class="button-row">
+                <button class="primary" onclick="register()">Register</button>
+                <button class="primary login-btn" onclick="login()">Login</button>
+            </div>
+
+            <button class="secondary full-btn theme-toggle-btn" onclick="toggleTheme()">Light Mode</button>
+
+            <p id="msg" class="message"></p>
+        </div>
+    </div>
+
+    <footer class="site-footer auth-footer">
+        <p>&copy; 2026 Grand Palace Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

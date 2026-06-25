@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Palace Hotel - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkAuth(); applyTheme();">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="images/hotel logo1.png" alt="Hotel Logo" class="logo">
+            <h2>Grand Palace Hotel</h2>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="booking.html">Book Room</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="payment.html">Payment</a>
+            <a href="profile.html">Profile</a>
+            <a href="admin.html">Admin</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="terms.html">Ts&amp;Cs</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()">Light Mode</button>
+            <button onclick="logout()">Logout</button>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <section class="hero">
+            <img src="images/hotelimage1.png" alt="Hotel Hero Image" class="hero-img">
+            <div class="hero-text">
+                <h1>Welcome to Grand Palace Hotel</h1>
+                <p>Luxury accommodation, smart bookings, and an elegant hotel experience.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Hotel Overview</h2>
+            <p>
+                Grand Palace Hotel is a modern hospitality destination designed to provide guests with
+                comfort, luxury, and convenience. Our hotel offers a range of beautifully prepared rooms,
+                including Single Rooms, Double Rooms, and Suites, each designed to meet different guest
+                needs and budgets.
+            </p>
+            <p>
+                The hotel management website allows guests to explore available rooms, view prices, make
+                bookings, and manage their reservations easily. Through the system, users can register,
+                log in, select their preferred room, choose check-in and check-out dates, and confirm
+                bookings in a simple and professional way.
+            </p>
+            <p>
+                For management purposes, the system also includes booking dashboards, reservation tracking,
+                room availability checks, payment simulation, and profile management. Admin users are able
+                to monitor all bookings, manage customer reservations, and oversee hotel operations from one place.
+            </p>
+            <p>
+                At Grand Palace Hotel, our goal is to combine luxury accommodation with smart digital
+                convenience, creating a smooth and efficient experience for both guests and hotel staff.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Room Pricing</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>Single</h3>
+                    <p>R500 per night</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Double</h3>
+                    <p>R800 per night</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Suite</h3>
+                    <p>R1500 per night</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Grand Palace Hotel. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
