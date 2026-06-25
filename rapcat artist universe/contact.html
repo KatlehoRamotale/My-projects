@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact RapCat</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <header>
+    <h1>Contact Portal</h1>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="universe.html">Universe</a>
+      <a href="music.html">Music</a>
+      <a href="nft.html">NFT Portal</a>
+      <a href="dashboard.html">Label Dashboard</a>
+      <a href="vault.html">Label Vault</a>
+      <a href="oracle.html">Oracle</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main class="contact-grid">
+    <section class="contact-card">
+      <h2>Bookings / Label Interest / Partnerships</h2>
+      <p>
+        Use this portal for bookings, sponsorships, collaborations, and label-related inquiries.
+      </p>
+
+      <form id="contactForm">
+        <input
+          type="text"
+          id="fullName"
+          placeholder="Full name"
+          required
+        >
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email address"
+          required
+        >
+
+        <select id="purpose" required>
+          <option value="">Select purpose</option>
+          <option value="Booking">Booking</option>
+          <option value="Label Interest">Label Interest</option>
+          <option value="Sponsorship">Sponsorship</option>
+          <option value="Collaboration">Collaboration</option>
+        </select>
+
+        <textarea
+          id="message"
+          placeholder="Write your message"
+          required
+        ></textarea>
+
+        <button type="submit">Transmit Message</button>
+      </form>
+
+      <p id="formStatus"></p>
+    </section>
+
+    <aside class="contact-card side-panel">
+      <h3>Direct channels</h3>
+      <p>Email: rapcat@wildhouse.com</p>
+      <p>Management: Wildhouse Entertainment</p>
+      <p>Location: Johannesburg, South Africa</p>
+
+      <div class="special-box">
+        <h4>Rare feature</h4>
+        <p>
+          This contact portal can later grow into a smart booking system that separates labels,
+          event promoters, media, sponsors, and collaborators automatically.
+        </p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="contact.js"></script>
+</body>
+</html>

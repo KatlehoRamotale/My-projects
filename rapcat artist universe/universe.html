@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildhouse Universe</title>
+<link rel="stylesheet" href="universe.css">
+</head>
+<body>
+<header class="topbar">
+<h1>Wildhouse Universe</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="universe.html" class="active">Universe</a>
+<a href="music.html">Music</a>
+<a href="nft.html">NFT Portal</a>
+<a href="dashboard.html">Label Dashboard</a>
+<a href="vault.html">Label Vault</a>
+<a href="oracle.html">Oracle</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+<main class="universe-page">
+<section class="scene-panel">
+<div id="scene">
+<div class="core-title">RapCat</div>
+<div class="planet planet-1" data-track="Track 1 - Star Code" data
+audio="assets/audio/track1.mp3"></div>
+<div class="planet planet-2" data-track="Track 2 - Ancestor Signal"
+data-audio="assets/audio/track2.mp3"></div>
+<div class="planet planet-3" data-track="Track 3 - Wildhouse Orbit"
+data-audio="assets/audio/track3.mp3"></div>
+<div class="planet planet-4" data-track="Unreleased World" data
+audio=""></div>
+</div>
+</section>
+<aside class="info-panel">
+<div class="glass-box">
+<p class="mini-title">Interactive system</p>
+<h2>Song Solar System</h2>
+<p>
+Move your mouse to shift the galaxy. Click any planet to reveal the 
+song and play audio.
+</p>
+</div>
+<div class="glass-box" id="planetInfo">
+<h3>Waiting for signal...</h3>
+<p>Select a planet to reveal its energy.</p>
+<button id="playBtn" disabled>Play Track</button>
+</div>
+<div class="glass-box">
+<h3>Rare feature</h3>
+<p>
+Each song becomes part of a larger myth instead of just being listed 
+on a plain page.
+</p>
+</div>
+</aside>
+</main>
+<audio id="audioPlayer"></audio>
+<script src="universe.js"></script>
+</body>
+</html>

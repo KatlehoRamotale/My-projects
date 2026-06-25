@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildhouse Oracle</title>
+<link rel="stylesheet" href="oracle.css">
+</head>
+<body>
+<header>
+<h1>Oracle Chamber</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="universe.html">Universe</a>
+<a href="music.html">Music</a>
+<a href="nft.html">NFT Portal</a>
+<a href="dashboard.html">Label Dashboard</a>
+<a href="vault.html">Label Vault</a>
+<a href="oracle.html" class="active">Oracle</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+<main class="oracle-wrap">
+<section class="oracle-card">
+<h2>Receive a message from the universe</h2>
+<p>This gives fans and visitors a memorable experience instead of a boring 
+page.</p>
+<button id="oracleBtn">Reveal Message</button>
+<div id="oracleMessage">The chamber is quiet...</div>
+</section>
+<section class="memory-card">
+<h2>Leave a star message</h2>
+<form id="starForm">
+<input type="text" id="visitorName" placeholder="Your name" required>
+<textarea id="visitorMessage" placeholder="Leave a message for the 
+universe" required></textarea>
+<button type="submit">Send to the stars</button>
+</form>
+<div id="memoryWall"></div>
+</section>
+</main>
+<script src="oracle.js"></script>
+</body>
+</html>

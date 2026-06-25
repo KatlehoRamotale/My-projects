@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildhouse Entertainment NFT Portal</title>
+<link rel="stylesheet" href="nft.css">
+</head>
+<body>
+<header>
+<h1>NFT Portal</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="universe.html">Universe</a>
+<a href="music.html">Music</a>
+<a href="nft.html" class="active">NFT Portal</a>
+<a href="dashboard.html">Label Dashboard</a>
+<a href="vault.html">Label Vault</a>
+<a href="oracle.html">Oracle</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+<main class="nft-layout">
+<section class="nft-hero card">
+<div>
+<p class="eyebrow">Collector economy</p>
+<h2>Own a piece of the Wildhouse universe</h2>
+<p>
+Fans do not just stream here. They can become collectors of moments, 
+unreleased worlds,
+visual relics, and myth coded assets.
+</p>
+</div>
+<div class="wallet-box">
+<h3>Wallet Connect</h3>
+<p id="walletStatus">No wallet connected</p>
+<div class="wallet-actions">
+<button id="connectWalletBtn">Connect Wallet</button>
+<button id="disconnectWalletBtn">Disconnect</button>
+</div>
+</div>
+</section>
+<section class="nft-grid">
+<article class="nft-card" data-name="Origin Planet" data-price="0.08 ETH"
+data-rarity="Rare" data-utility="Unlocks collector badge and private drops.">
+<div class="nft-art orb-one"></div>
+<span class="rarity rare">Rare</span>
+<h3>Origin Planet</h3>
+<p>First collector relic from the Wildhouse universe.</p>
+<button class="buy-btn">View NFT</button>
+</article>
+<article class="nft-card" data-name="Ancestor Signal Relic" data
+price="0.12 ETH" data-rarity="Epic" data-utility="Unlocks hidden audio snippets 
+and universe notes.">
+<div class="nft-art orb-two"></div>
+<span class="rarity epic">Epic</span>
+<h3>Ancestor Signal Relic</h3>
+<p>A spiritual collectible tied to mythology and message.</p>
+<button class="buy-btn">View NFT</button>
+</article>
+<article class="nft-card" data-name="Wildhouse Key" data-price="0.20 ETH"
+data-rarity="Legendary" data-utility="Unlocks priority access to drops, events, 
+and collabs.">
+<div class="nft-art orb-three"></div>
+<span class="rarity legendary">Legendary</span>
+<h3>Wildhouse Key</h3>
+<p>A premium pass for deeper fan access and future perks.</p>
+<button class="buy-btn">View NFT</button>
+</article>
+</section>
+<section class="nft-details card" id="nftDetails">
+<h3>Select an NFT</h3>
+<p>Its price, utility, rarity, and collector value will appear here.</p>
+</section>
+<section class="collector-board-row">
+<section class="collector-features card">
+<h2>Exclusive unlockables</h2>
+<div class="collector-grid">
+<div>
+<h3>Unreleased audio vault</h3>
+<p>Hidden songs, demos, and behind-the-scenes sound experiments.</p>
+</div>
+<div>
+<h3>Private visual drops</h3>
+<p>Collector-only posters, lore art, and alternative cover 
+concepts.</p>
+</div>
+<div>
+<h3>Priority event access</h3>
+<p>Early access to live events, listening sessions, and special 
+rooms.</p>
+</div>
+<div>
+<h3>Universe archive</h3>
+<p>Story notes explaining symbols, planets, meanings, and Artist 
+lore.</p>
+</div>
+</div>
+</section>
+<section class="leaderboard card">
+<h2>Collector Leaderboard</h2>
+<div class="leaderboard-list">
+<div class="leader-row"><span>#1</span><strong>StarCollectorX</
+strong><em>Legendary Holder</em></div>
+<div class="leader-row"><span>#2</span><strong>OrbitChild</
+strong><em>Epic Holder</em></div>
+<div class="leader-row"><span>#3</span><strong>SignalKeeper</
+strong><em>Rare Holder</em></div>
+<div class="leader-row"><span>#4</span><strong>MoonArchive</
+strong><em>Vault Member</em></div>
+<div class="leader-row"><span>#5</span><strong>WildhouseNode</
+strong><em>Collector Rising</em></div>
+</div>
+</section>
+</section>
+</main>
+<script src="nft.js"></script>
+</body>
+</html>

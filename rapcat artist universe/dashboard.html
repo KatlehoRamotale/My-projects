@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildhouse Label Dashboard</title>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<header>
+<h1>Label Dashboard</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="universe.html">Universe</a>
+<a href="music.html">Music</a>
+<a href="nft.html">NFT Portal</a>
+<a href="dashboard.html" class="active">Label Dashboard</a>
+<a href="vault.html">Label Vault</a>
+<a href="oracle.html">Oracle</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+<main class="dashboard-layout">
+<section class="top-metrics">
+<div class="metric-card">
+<p>Artist Score</p>
+<h2>94</h2>
+</div>
+<div class="metric-card">
+<p>Deal Strength</p>
+<h2>88</h2>
+</div>
+<div class="metric-card">
+<p>Collector Heat</p>
+<h2>76</h2>
+</div>
+<div class="metric-card">
+<p>Global Reach</p>
+<h2>12</h2>
+</div>
+</section>
+<section class="dashboard-grid">
+<div class="card chart-card">
+<h2>Artist Scoring Radar</h2>
+<canvas id="artistRadar" width="420" height="320"></canvas>
+</div>
+<div class="card chart-card">
+<h2>Deal Scenario Simulator</h2>
+<div class="deal-buttons">
+<button class="deal-btn active" data-type="independent">Independent</button>
+<button class="deal-btn" data-type="distribution">Distribution</button>
+<button class="deal-btn" data-type="licensing">Licensing</button>
+<button class="deal-btn" data-type="label">Full Label</button>
+</div>
+<canvas id="dealChart" width="420" height="260"></canvas>
+<div id="dealSummary" class="deal-summary"></div>
+</div>
+<div class="card world-card">
+<h2>Live Gig Globe</h2>
+<p>Rotating world map with glowing points showing local and 
+international Wildhouse Artist gig locations.</p>
+<div class="globe-stage">
+<div class="globe-wrap">
+<div class="globe">
+<div class="globe-shine"></div>
+<div class="continent continent-africa"></div>
+<div class="continent continent-europe"></div>
+<div class="continent continent-asia"></div>
+<div class="continent continent-north-america"></div>
+<div class="continent continent-south-america"></div>
+<div class="continent continent-australia"></div>
+<svg class="flight-lines" viewBox="0 0 320 320" aria
+hidden="true">
+<path class="flight-path" d="M170 198 Q155 150 138 110"></path>
+<path class="flight-path" d="M170 198 Q180 165 195 132"></path>
+<path class="flight-path" d="M170 198 Q126 150 82 122"></path>
+<path class="flight-path" d="M170 198 Q145 178 158 225"></path>
+</svg>
+<button class="point point-jhb" data-city="Johannesburg" data
+country="South Africa" data-status="Local core show zone" data-date="18 April 
+2026" data-venue="Soweto Night Dome" aria-label="Johannesburg gig point"></
+button>
+<button class="point point-cpt" data-city="Cape Town" data
+country="South Africa" data-status="Coastal showcase route" data-date="25 April 
+2026" data-venue="Atlantic Hall" aria-label="Cape Town gig point"></button>
+<button class="point point-dbn" data-city="Durban" data
+country="South Africa" data-status="Eastern expansion date" data-date="02 May 
+2026" data-venue="Wave District" aria-label="Durban gig point"></button>
+<button class="point point-london" data-city="London" data
+country="United Kingdom" data-status="Diaspora / global bridge" data-date="16 
+May 2026" data-venue="Orbit Culture Room" aria-label="London gig point"></button>
+<button class="point point-ny" data-city="New York" data
+country="USA" data-status="Media and culture activation" data-date="29 May 
+2026" data-venue="Nova Sound Lab" aria-label="New York gig point"></button>
+<button class="point point-lagos" data-city="Lagos" data
+country="Nigeria" data-status="African expansion node" data-date="09 May 2026"
+data-venue="Signal Arena" aria-label="Lagos gig point"></button>
+<button class="point point-dubai" data-city="Dubai" data
+country="UAE" data-status="Luxury market showcase" data-date="21 May 2026" data
+venue="Gold Mirage Stage" aria-label="Dubai gig point"></button>
+</div>
+</div>
+<div class="globe-side-panel">
+<div class="mini-panel">
+<h3>Route activity</h3>
+<p>Hover a point for a quick label. Click a point to open full gig details.</p>
+</div>
+<div class="mini-panel" id="gigPopup">
+<h3>Select a glowing point</h3>
+<p>City, venue, date, and route status will appear here.</p>
+</div>
+</div>
+</div>
+<div class="gig-feed" id="gigFeed"></div>
+</div>
+<div class="card chart-card">
+<h2>Brand Power Bars</h2>
+<canvas id="brandBars" width="420" height="300"></canvas>
+</div>
+</section>
+</main>
+<script src="dashboard.js"></script>
+</body>
+</html>
