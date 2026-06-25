@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Business Expense Predictor</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; margin:0; }
+        .navbar { background: #003366; padding: 15px; color: white; text-align: center; }
+        .container { margin: 40px auto; width: 400px; background: white; padding: 25px; 
+                     border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input[type="number"] { width: 100%; padding: 10px; margin-top: 10px; 
+                               font-size: 16px; }
+        button { width: 100%; padding: 10px; background: #003366; color: white;
+                 border: none; margin-top: 10px; font-size: 17px; cursor: pointer; }
+        button:hover { background: #0055aa; }
+        .result-box { margin-top: 20px; padding: 15px; background: #e8f0fe; 
+                      border-left: 4px solid #003366; }
+        footer { text-align: center; padding: 20px; margin-top: 40px; color: gray; }
+    </style>
+
+    <script>
+        async function predictExpense() {
+            const monthNumber = document.getElementById('month').value;
+
+            if (!monthNumber) {
+                alert("Please enter a month number.");
+                return;
+            }
+
+            const response = await fetch('/predict_expense', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ "month_number": monthNumber })
+            });
+
+            const data = await response.json();
+
+            if (data.error) {
+                document.getElementById("result").innerHTML =
+                    `<div class='result-box'>Error: ${data.error}</div>`;
+            } else {
+                document.getElementById("result").innerHTML =
+                    `<div class='result-box'>
+                        <b>Prediction for Month ${data.month_number}:</b><br>
+                        Estimated Expense: <b>R ${data.predicted_expense_R}</b>
+                     </div>`;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="navbar">
+        <h2>Katleho's Smart Business Expense Predictor</h2>
+    </div>
+
+    <div class="container">
+        <h3>Enter Month Number</h3>
+        <input type="number" id="month" placeholder="e.g., 37" min="1">
+        <button onclick="predictExpense()">Predict Expense</button>
+
+        <div id="result"></div>
+    </div>
+
+    <footer>
+        © 2026 Katleho Ramotale | Smart Predictive Systems
+    </footer>
+</body>
+</html>
